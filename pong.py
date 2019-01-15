@@ -1,6 +1,7 @@
 """ pong game using python turtle library for a practice. """
 
 import turtle
+import os
 
 # Creating window or screen
 wn = turtle.Screen()
@@ -82,7 +83,6 @@ wn.onkeypress(paddle_b_down, "Down")
 while True:
 	wn.update()
 
-
 	# Move the ball
 	ball.setx(ball.xcor() + ball.dx)
 	ball.sety(ball.ycor() + ball.dy)
@@ -91,10 +91,12 @@ while True:
 	if ball.ycor() > 290:
 		ball.sety(290)
 		ball.dy *= -1
+		os.system("aplay bounce.wav&")
 
 	if ball.ycor() < -290:
 		ball.sety(-290)
 		ball.dy *= -1
+		os.system("aplay bounce.wav&")
 
 	if ball.xcor() > 390:
 		ball.goto(0, 0)
@@ -114,7 +116,9 @@ while True:
 	if (ball.xcor() > 340 and ball.xcor() < 350) and (ball.ycor() < paddle_b.ycor() + 40 and ball.ycor() > paddle_b.ycor() - 40):
 		ball.setx(340)
 		ball.dx *= -1
+		os.system("aplay bounce.wav&")
 
 	if (ball.xcor() < -340 and ball.xcor() > -350) and (ball.ycor() < paddle_a.ycor() + 40 and ball.ycor() > paddle_a.ycor() - 40):
 		ball.setx(-340)
 		ball.dx *= -1
+		os.system("aplay bounce.wav&")
